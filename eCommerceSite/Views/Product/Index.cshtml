@@ -5,10 +5,12 @@
 
 <h1>Product Catalog</h1>
 
-<p>
-    @TempData["Message"]
-</p>
-
+<h2 data-toggle="modal" href="#myModal">@if (TempData["Message"]!=null)
+{
+    //<script>$('#myModal').modal(options);</script>
+    <b class="badge-success" style="color:orange">Sucess!-click me for more details</b>;
+}</h2>
+<br />
 <a asp-action="Add" asp-controller="Product">Add Product</a>
 
 <div class="table-responsive">
@@ -35,6 +37,38 @@
 	        }
         </tbody>
     </table>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+
+    <div class="modal-dialog bg-dark">
+
+        <div class="modal-content bg-dark">
+
+            <div class="modal-header bg-dark">
+                <h5 class="modal-header">Success!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="text-light" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body bg-dark">
+                <p>
+                    @TempData["Message"]
+                    <br />
+                    <br />
+                    @TempData["Details"]
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 
