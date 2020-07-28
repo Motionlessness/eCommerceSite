@@ -11,4 +11,6 @@ This is an in-class project for the CPW213 Course.
 
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=motionlessness&repo=eCommerceSite&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
 
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=motionlessness&layout=compact&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
+
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=motionlessness&show_icons=true&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
