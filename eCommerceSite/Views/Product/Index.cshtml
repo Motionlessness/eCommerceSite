@@ -4,6 +4,13 @@
 }
 
 <h1>Product Catalog</h1>
+
+<p>
+    @TempData["Message"]
+</p>
+
+<a asp-action="Add" asp-controller="Product">Add Product</a>
+
 <div class="table-responsive">
     <table class="table table-striped table-dark" style="text-align:center">
         <thead class="table-dark table-bordered">
