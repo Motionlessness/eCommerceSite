@@ -5,11 +5,13 @@
 
 <h1>Product Catalog</h1>
 
-<h2 data-toggle="modal" href="#myModal">@if (TempData["Message"]!=null)
-{
-    //<script>$('#myModal').modal(options);</script>
-    <b class="badge-success" style="color:orange">Sucess!-click me for more details</b>;
-}</h2>
+<h2 data-toggle="modal" href="#myModal">
+    @if (TempData["Message"]!=null)
+    {
+        //<script>$('#myModal').modal(options);</script>
+        <b class="badge-success" style="color:orange">Sucess!-click me for more details</b>;
+    }
+</h2>
 <br />
 <a asp-action="Add" asp-controller="Product">Add Product</a>
 
