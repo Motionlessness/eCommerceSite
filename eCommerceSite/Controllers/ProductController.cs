@@ -12,7 +12,7 @@ namespace eCommerceSite.Controllers
     public class ProductController : Controller
     {
         private readonly ProductContext _context;
-        public ProductController(ProductContext context) 
+        public ProductController(ProductContext context)
         {
             _context = context;
         }
@@ -88,6 +88,34 @@ namespace eCommerceSite.Controllers
             }
 
             return View(p);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            Product p = await _context
+                .Products
+                .Where(prod => prod.ProductId == id)
+                .SingleAsync();
+            return View(p);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            Product p = await (from prod in _context.Products
+                where(prod.ProductId == id)
+                select prod).SingleAsync();
+
+
+            _context.Entry(p).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+
+            TempData["Message"] = $"Item #{p.ProductId} : {p.Title} was deleted successfully!";
+            TempData["Details"] = $"ID : {p.ProductId} , Title : {p.Title} , Category : {p.Category} , Price : {p.Price}";
+
+            return RedirectToAction("Index");
         }
     }
 }
