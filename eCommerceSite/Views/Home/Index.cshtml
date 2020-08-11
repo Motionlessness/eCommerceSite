@@ -2,19 +2,25 @@
     ViewData["Title"] = "Home Page";
 }
 
-    <div class="text-center">
-        <h1 class="text-light">Welcome to my eCommerce dark themed Website!</h1>
 
-        <figcaption class="text-lg">This image is smaller than the two bellow it but bootstrap handles the sizing.</figcaption>
-        <img src="/images/panda.jpg" class="img-fluid card-img-top" alt="Panda" />
-        <br />
-        <br />
+<div class="text-center">
+    <h1 class="text-light">Welcome to my eCommerce dark themed Website!</h1>
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert-secondary alert-success">
+            <h2> @TempData["Message"]</h2>
+        </div>;
+    }
+    <figcaption class="text-lg">This image is smaller than the two bellow it but bootstrap handles the sizing.</figcaption>
+    <img src="/images/panda.jpg" class="img-fluid card-img-top" alt="Panda" />
+    <br />
+    <br />
 
-        <figcaption class="text-lg">This image has a thumbnail border  of 1px.</figcaption>
-        <img src="/images/pathway.jpg" class="img-thumbnail card-img" alt="Pathways" />
-        <br />
-        <br />
+    <figcaption class="text-lg">This image has a thumbnail border  of 1px.</figcaption>
+    <img src="/images/pathway.jpg" class="img-thumbnail card-img" alt="Pathways" />
+    <br />
+    <br />
 
-        <figcaption class="text-lg">Each text box is a caption for that specific image and styled with bootstrap.</figcaption>
-        <img src="/images/freefall.jpg" class="img-fluid card-img-bottom" alt="Falling" />
-    </div>
+    <figcaption class="text-lg">Each text box is a caption for that specific image and styled with bootstrap.</figcaption>
+    <img src="/images/freefall.jpg" class="img-fluid card-img-bottom" alt="Falling" />
+</div>
