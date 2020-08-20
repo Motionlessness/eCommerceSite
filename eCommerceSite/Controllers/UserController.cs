@@ -31,6 +31,26 @@ namespace eCommerceSite.Controllers
         {
             if (ModelState.IsValid)
             {
+                bool isEmailTaken = await (from account in _context.Accounts
+                                    where account.Email == regi.Email
+                                    select account).AnyAsync();
+
+                if (isEmailTaken)
+                {
+                    ModelState.AddModelError(nameof(RegisterViewModel.Email), "That email is already in use!");
+                    return View(regi);
+                };
+
+                bool isUserTaken = await (from account in _context.Accounts
+                                           where account.Username == regi.UserName
+                                           select account).AnyAsync();
+
+                if (isUserTaken)
+                {
+                    ModelState.AddModelError(nameof(RegisterViewModel.UserName), "That username is already in use!");
+                    return View(regi);
+                };
+
                 UserAccount user = new UserAccount()
                 {
                     DateOfBirth = regi.DateOfBirth ,
