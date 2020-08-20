@@ -62,6 +62,8 @@ namespace eCommerceSite.Controllers
                 _context.Accounts.Add(user);
                 await _context.SaveChangesAsync();
 
+                LogUserIn(user.UserId);
+
                 TempData["Message"] = $"Welcome {user.Username}, registration was a success!";
                 return RedirectToAction("Index", "Home");
             }
@@ -89,23 +91,27 @@ namespace eCommerceSite.Controllers
             //                             u.Password == logger.Password
             //                             select u).SingleOrDefaultAsync();
 
-            UserAccount account = 
+            UserAccount account =
                 await (_context.Accounts
                     .Where(ua => (ua.Username == logger.UsernameOrEmail ||
                                 ua.Email == logger.UsernameOrEmail) &&
                                 ua.Password == logger.Password)
                 .SingleOrDefaultAsync());
 
-            if(account == null)
+            if (account == null)
             {
                 ModelState.AddModelError(string.Empty, "Credentials were not found");
 
                 return View(logger);
             }
-
-            HttpContext.Session.SetInt32("UserId", account.UserId);
+            LogUserIn(account.UserId);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        private void LogUserIn(int accountId)
+        {
+            HttpContext.Session.SetInt32("UserId", accountId);
         }
 
         public IActionResult Logout()
