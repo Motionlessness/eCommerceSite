@@ -22,8 +22,6 @@
                 <th>@Html.DisplayNameFor(m => m.Title)</th>
                 <th>@Html.DisplayNameFor(m => m.Price)</th>
                 <th>@Html.DisplayNameFor(m => m.Category)</th>
-                <th>Edit Product</th>
-                <th>Delete Product</th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +33,7 @@
                     <td>@product.Category</td>
                     <td><a class="btn btn-primary" asp-action="Edit" asp-route-id="@product.ProductId">Edit</a></td>
                     <td><a class="btn btn-danger" asp-action="Delete" asp-route-id="@product.ProductId">Delete</a></td>
+                    <td><a class="btn btn-secondary" asp-action="Add" asp-controller="Cart" asp-route-id="@product.ProductId">Add to Cart</a></td>
                 </tr>
             }
         </tbody>

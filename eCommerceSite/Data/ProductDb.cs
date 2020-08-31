@@ -42,10 +42,10 @@ namespace eCommerceSite.Data
             return p;
         }
 
-        public async static Task<Product> GetSingleProductAsync(ProductContext _context, int id)
+        public async static Task<Product> GetSingleProductAsync(ProductContext _context, int prodId)
         {
            Product p = await _context.Products
-                .Where(prod => prod.ProductId == id)
+                .Where(prod => prod.ProductId == prodId)
                 .SingleAsync();
             return p;
         }
